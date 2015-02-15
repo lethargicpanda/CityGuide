@@ -3,6 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/lyft_pink</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="SliderButton">
