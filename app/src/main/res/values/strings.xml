@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">City Guide</string>
+
+    <string name="bar">Bar</string>
+    <string name="bistro">Bistro</string>
+    <string name="cafe">Café</string>
+
+</resources>
