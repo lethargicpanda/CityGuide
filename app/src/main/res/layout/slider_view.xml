@@ -19,6 +19,7 @@
         style="@style/SliderButton"
         android:text="@string/bar"
         android:layout_alignParentLeft="true"
+        android:textColor="@color/lyft_orange"
         />
 
     <TextView

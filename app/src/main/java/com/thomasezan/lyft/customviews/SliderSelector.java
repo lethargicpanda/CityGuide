@@ -69,14 +69,25 @@ public class SliderSelector extends RelativeLayout {
         if (event.getAction()==MotionEvent.ACTION_UP){
             float finalPosition = 0;
 
+            barTextView.setTextColor(getResources().getColor(R.color.white));
+            bistroTextView.setTextColor(getResources().getColor(R.color.white));
+            cafeTextView.setTextColor(getResources().getColor(R.color.white));
+
+
             if (touchLocation<(getWidth()/3)){
                 finalPosition = barTextView.getX();
+                barTextView.setTextColor(getResources().getColor(R.color.lyft_orange));
+
                 currentPlaceType = Place.TYPE.BAR;
             } else if (touchLocation<(getWidth()*2/3)) {
                 finalPosition = bistroTextView.getX();
+                bistroTextView.setTextColor(getResources().getColor(R.color.lyft_orange));
+
                 currentPlaceType = Place.TYPE.BISTRO;
             } else if (touchLocation>(getWidth()*2/3)) {
                 finalPosition = cafeTextView.getX();
+                cafeTextView.setTextColor(getResources().getColor(R.color.lyft_orange));
+
                 currentPlaceType = Place.TYPE.CAFE;
             }
 
