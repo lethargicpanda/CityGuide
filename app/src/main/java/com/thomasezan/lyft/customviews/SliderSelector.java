@@ -8,12 +8,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.squareup.otto.Bus;
 import com.thomasezan.lyft.R;
 import com.thomasezan.lyft.models.Place;
 import com.thomasezan.lyft.providers.BusProvider;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnTouch;

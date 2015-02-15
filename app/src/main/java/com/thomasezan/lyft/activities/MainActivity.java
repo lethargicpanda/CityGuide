@@ -1,18 +1,10 @@
-    package com.thomasezan.lyft.activities;
+package com.thomasezan.lyft.activities;
 
-import android.location.Location;
-import android.os.AsyncTask;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Pair;
 import android.widget.ListView;
-
-
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 import com.thomasezan.lyft.R;
@@ -22,14 +14,7 @@ import com.thomasezan.lyft.models.Place;
 import com.thomasezan.lyft.providers.BusProvider;
 import com.thomasezan.lyft.providers.GeolocationProvider;
 import com.thomasezan.lyft.providers.PlacesProvider;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 

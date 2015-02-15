@@ -7,13 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.thomasezan.lyft.R;
 import com.thomasezan.lyft.customviews.StarRow;
 import com.thomasezan.lyft.models.Place;
-
 import java.util.ArrayList;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 

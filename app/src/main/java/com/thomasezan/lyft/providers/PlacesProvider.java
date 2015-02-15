@@ -2,20 +2,15 @@ package com.thomasezan.lyft.providers;
 
 import android.location.Location;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.util.Pair;
-
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.thomasezan.lyft.models.Place;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**

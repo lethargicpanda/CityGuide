@@ -1,7 +1,6 @@
 package com.thomasezan.lyft.models;
 
 import com.thomasezan.lyft.R;
-
 import org.json.JSONObject;
 
 /**

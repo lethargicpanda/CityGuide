@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import com.thomasezan.lyft.R;
 
 /**
