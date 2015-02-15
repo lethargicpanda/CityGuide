@@ -43,9 +43,6 @@ public class MainActivity extends ActionBarActivity {
         bus.register(this);
 
 
-        placeAdapter = new PlaceAdapter(this);
-        listView.setAdapter(placeAdapter);
-
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -53,7 +50,10 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        // Init listview for Bars
+        placeAdapter = new PlaceAdapter(this);
         PlacesProvider.fetchPlaces(GeolocationProvider.getInstance(this).getLocation(), Place.TYPE.BAR);
+        listView.setAdapter(placeAdapter);
 
     }
 
