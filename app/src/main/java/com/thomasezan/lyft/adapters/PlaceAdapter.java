@@ -19,9 +19,9 @@ import butterknife.InjectView;
  */
 public class PlaceAdapter extends BaseAdapter {
 
-    ArrayList<Place> placeList;
-    Place.TYPE type;
-    LayoutInflater inflater;
+    private ArrayList<Place> placeList;
+    private Place.TYPE type;
+    private LayoutInflater inflater;
 
     public PlaceAdapter(Context context) {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

@@ -8,27 +8,25 @@ import org.json.JSONObject;
  */
 public class Place {
 
-    public static String JSON_NAME = "name";
-    public static String JSON_RATING = "rating";
+    private static final String JSON_NAME = "name";
+    private static final String JSON_RATING = "rating";
 
     public static enum TYPE {
-        BAR ("bar", R.drawable.ic_bar, "Bar"),
-        BISTRO ("restaurant", R.drawable.ic_bistro, "Bistro"),
-        CAFE ("cafe", R.drawable.ic_cafe, "Café");
+        BAR ("bar", R.drawable.ic_bar),
+        BISTRO ("restaurant", R.drawable.ic_bistro),
+        CAFE ("cafe", R.drawable.ic_cafe);
 
-        TYPE(String requestParam, int iconResource, String label) {
+        TYPE(String requestParam, int iconResource) {
             this.requestParam = requestParam;
             this.iconResource = iconResource;
-            this.label = label;
         }
 
         public final String requestParam;
         public final int iconResource;
-        public final String label;
     }
 
-    String name;
-    float rating;
+    private String name;
+    private float rating;
 
     public String getName() {
         return name;
@@ -38,7 +36,7 @@ public class Place {
         return rating;
     }
 
-    public Place(String name, float rating) {
+    private Place(String name, float rating) {
         this.name = name;
         this.rating = rating;
     }

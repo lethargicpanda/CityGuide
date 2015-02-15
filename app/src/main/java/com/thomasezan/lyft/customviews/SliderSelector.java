@@ -42,7 +42,7 @@ public class SliderSelector extends RelativeLayout {
         init();
     }
 
-    public void init(){
+    void init(){
         LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         li.inflate(R.layout.slider_view, this, true);
 

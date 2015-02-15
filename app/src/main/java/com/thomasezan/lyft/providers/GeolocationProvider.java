@@ -9,8 +9,9 @@ import android.location.LocationManager;
  */
 public class GeolocationProvider {
 
-    LocationManager locationManager;
     private static GeolocationProvider instance;
+
+    private LocationManager locationManager;
 
     public static GeolocationProvider getInstance(Context context){
 

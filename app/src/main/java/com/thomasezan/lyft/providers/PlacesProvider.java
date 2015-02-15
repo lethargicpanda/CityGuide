@@ -18,9 +18,9 @@ import java.util.ArrayList;
  */
 public class PlacesProvider {
 
-    private static String BASE_URL = "https://maps.googleapis.com/maps/api/place/search/json?radius=1000&sensor=true&key=AIzaSyDwvIbB3QBPN4VbC5i3Dbu7Cg-C9LTSxjU";
-    private static String TYPE_KEY = "&types=";
-    private static String LOCATION_KEY = "&location=";
+    private static final String BASE_URL = "https://maps.googleapis.com/maps/api/place/search/json?radius=1000&sensor=true&key=AIzaSyDwvIbB3QBPN4VbC5i3Dbu7Cg-C9LTSxjU";
+    private static final String TYPE_KEY = "&types=";
+    private static final String LOCATION_KEY = "&location=";
 
     private static OkHttpClient client = new OkHttpClient();
     private static AsyncTask<String, String, Boolean> fetchTask;
@@ -28,7 +28,7 @@ public class PlacesProvider {
 
    public static void fetchPlaces(final Location location, final Place.TYPE placeType){
 
-       // Cancel pending task
+       // Cancel pending task if currently running
        if(fetchTask!=null && fetchTask.getStatus() == AsyncTask.Status.RUNNING){
            fetchTask.cancel(true);
        }
@@ -40,13 +40,13 @@ public class PlacesProvider {
            @Override
            protected void onPreExecute() {
                super.onPreExecute();
-               BusProvider.getInstance().post(new Boolean(true));
+               BusProvider.getInstance().post(Boolean.valueOf(true));
            }
 
            @Override
            protected Boolean doInBackground(String... params) {
                Request request = new Request.Builder()
-                       .url(createUrl(location, placeType))
+                       .url(buildUrl(location, placeType))
                        .build();
 
                try {
@@ -82,17 +82,17 @@ public class PlacesProvider {
    }
 
 
-   public static String createUrl(Location location, Place.TYPE type){
-       StringBuffer urlBuffer = new StringBuffer(BASE_URL);
-       urlBuffer.append(LOCATION_KEY);
-       urlBuffer.append(location.getLatitude());
-       urlBuffer.append(",");
-       urlBuffer.append(location.getLongitude());
+   private static String buildUrl(Location location, Place.TYPE type){
+       StringBuilder urlBuilder = new StringBuilder(BASE_URL);
+       urlBuilder.append(LOCATION_KEY);
+       urlBuilder.append(location.getLatitude());
+       urlBuilder.append(",");
+       urlBuilder.append(location.getLongitude());
 
-       urlBuffer.append(TYPE_KEY);
-       urlBuffer.append(type.requestParam);
+       urlBuilder.append(TYPE_KEY);
+       urlBuilder.append(type.requestParam);
 
-       return urlBuffer.toString();
+       return urlBuilder.toString();
    }
 
 }

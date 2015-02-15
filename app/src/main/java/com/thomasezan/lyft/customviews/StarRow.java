@@ -12,7 +12,7 @@ import com.thomasezan.lyft.R;
  */
 public class StarRow extends LinearLayout{
 
-    float rating;
+    private float rating;
 
     public StarRow(Context context) {
         super(context);
@@ -29,21 +29,21 @@ public class StarRow extends LinearLayout{
         init();
     }
 
-    public void init(){
+    void init(){
         removeAllViews();
 
         setPadding(0,0,0,0);
 
         for (int i = 0; i<5; i++){
             ImageView imageView = new ImageView(getContext());
-            int starRessourceId;
+            int starResourceId;
 
             if (i < Math.round(rating)){
-                starRessourceId = R.drawable.star_pink;
+                starResourceId = R.drawable.star_pink;
             } else {
-                starRessourceId = R.drawable.star_grey;
+                starResourceId = R.drawable.star_grey;
             }
-            imageView.setImageResource(starRessourceId);
+            imageView.setImageResource(starResourceId);
             addView(imageView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         }
 
