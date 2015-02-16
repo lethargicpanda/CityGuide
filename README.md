@@ -26,5 +26,5 @@ The application is organized in 5 packages:
  * [**providers**](https://github.com/lethargicpanda/CityGuide/tree/master/app/src/main/java/com/thomasezan/lyft/providers) which contains helper classes being either Singletons or utility classes with static methods:
  
   * ```BusProvider``` is a singleton used as a single point of access to the application's Event Bus,
-  * ```GeolocationProvider``` is a singleton used to querey the device geolocation,
+  * ```GeolocationProvider``` is a singleton used to query the device geolocation,
   * ```PlacesProvider``` is a utility class with a static method fetching the places from Google API.

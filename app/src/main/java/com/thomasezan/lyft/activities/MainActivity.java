@@ -1,5 +1,6 @@
 package com.thomasezan.lyft.activities;
 
+import android.location.Location;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.swipe_layout) SwipeRefreshLayout swipeLayout;
     @InjectView(R.id.slider_selector) SliderSelector sliderSelector;
 
-    PlaceAdapter placeAdapter;
+    private PlaceAdapter placeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,37 +43,42 @@ public class MainActivity extends ActionBarActivity {
         Bus bus = BusProvider.getInstance();
         bus.register(this);
 
-
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                PlacesProvider.fetchPlaces(GeolocationProvider.getInstance(MainActivity.this).getLocation(), sliderSelector.getCurrentPlaceType());
+                Location location = GeolocationProvider.getInstance(MainActivity.this).getLocation();
+                PlacesProvider.fetchPlaces(location, sliderSelector.getCurrentPlaceType());
             }
         });
 
         // Init listview for Bars
         placeAdapter = new PlaceAdapter(this);
-        PlacesProvider.fetchPlaces(GeolocationProvider.getInstance(this).getLocation(), Place.TYPE.BAR);
         listView.setAdapter(placeAdapter);
 
+        Location location = GeolocationProvider.getInstance(this).getLocation();
+        if (location!=null){
+            PlacesProvider.fetchPlaces(location, Place.TYPE.BAR);
+        }
     }
 
     // Otto callbacks
     @Subscribe
-    public void onPlaceTypeChanged(Place.TYPE placeType){
-        PlacesProvider.fetchPlaces(GeolocationProvider.getInstance(this).getLocation(), placeType);
+    public void onPlaceTypeChanged(Place.TYPE placeType) {
+        Location location = GeolocationProvider.getInstance(this).getLocation();
+        if(location!=null){
+            PlacesProvider.fetchPlaces(location, placeType);
+        }
     }
 
-
     @Subscribe
-    public void onPlacesFetched(Pair<Place.TYPE,ArrayList<Place>> typePlacesPair){
+    public void onPlacesFetched(Pair<Place.TYPE,ArrayList<Place>> typePlacesPair) {
         swipeLayout.setRefreshing(false);
         placeAdapter.setPlaceList(typePlacesPair.second, typePlacesPair.first);
         placeAdapter.notifyDataSetChanged();
     }
 
     @Subscribe
-    public void onStartFetchingPlaces(Boolean refresh){
+    public void onStartFetchingPlaces(Boolean refresh) {
         swipeLayout.setRefreshing(refresh);
     }
 

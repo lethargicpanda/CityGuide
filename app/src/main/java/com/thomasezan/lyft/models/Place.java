@@ -51,14 +51,13 @@ public class Place {
             rating = -1;
         }
 
-
         return new Place(name, rating);
     }
 
     @Override
     public String toString() {
         return "Place{" +
-                "name='" + name + '\'' +
+                "name='" + name +
                 ", rating=" + rating +
                 '}';
     }

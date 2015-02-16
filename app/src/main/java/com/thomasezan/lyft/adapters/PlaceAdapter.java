@@ -80,7 +80,6 @@ public class PlaceAdapter extends BaseAdapter {
         @InjectView(R.id.star_row) StarRow starRow;
         @InjectView(R.id.place_icon) ImageView placeImageView;
 
-
         public ViewHolder(View view) {
             ButterKnife.inject(this, view);
         }

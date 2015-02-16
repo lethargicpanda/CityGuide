@@ -11,9 +11,9 @@ public class GeolocationProvider {
 
     private static GeolocationProvider instance;
 
-    private LocationManager locationManager;
+    static private LocationManager locationManager;
 
-    public static GeolocationProvider getInstance(Context context){
+    public static GeolocationProvider getInstance(Context context) {
 
         if (instance==null){
             instance = new GeolocationProvider(context);
@@ -23,10 +23,13 @@ public class GeolocationProvider {
     }
 
     private GeolocationProvider(Context context) {
-        this.locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
     }
 
-    public Location getLocation(){
+    public Location getLocation() {
+        // We use LocationManager.NETWORK_PROVIDER because, in our case we need
+        // location info as fast as possible and it doesn't have to be the most
+        // accurate possible
         return locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
     }
 

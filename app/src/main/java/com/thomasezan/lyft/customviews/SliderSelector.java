@@ -25,7 +25,10 @@ public class SliderSelector extends RelativeLayout {
     @InjectView(R.id.cafe_textview) TextView cafeTextView;
     @InjectView(R.id.slider_view) View sliderView;
 
-    Place.TYPE currentPlaceType;
+    private int whiteColor;
+    private int orangeColor;
+
+    private Place.TYPE currentPlaceType;
 
     public SliderSelector(Context context) {
         super(context);
@@ -46,10 +49,12 @@ public class SliderSelector extends RelativeLayout {
         LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         li.inflate(R.layout.slider_view, this, true);
 
+        whiteColor = getResources().getColor(R.color.white);
+        orangeColor = getResources().getColor(R.color.lyft_orange);
+
         ButterKnife.inject(this, getRootView());
 
         currentPlaceType = Place.TYPE.BAR;
-
     }
 
     @OnTouch(R.id.tray_layout)
@@ -66,27 +71,27 @@ public class SliderSelector extends RelativeLayout {
         if (event.getAction()==MotionEvent.ACTION_UP){
             float finalPosition = 0;
 
-            barTextView.setTextColor(getResources().getColor(R.color.white));
-            bistroTextView.setTextColor(getResources().getColor(R.color.white));
-            cafeTextView.setTextColor(getResources().getColor(R.color.white));
-
+            int barTextViewColor = whiteColor;
+            int bistroTextViewColor = whiteColor;
+            int cafeTextViewColor = whiteColor;
 
             if (touchLocation<(getWidth()/3)){
                 finalPosition = barTextView.getX();
-                barTextView.setTextColor(getResources().getColor(R.color.lyft_orange));
-
+                barTextViewColor = orangeColor;
                 currentPlaceType = Place.TYPE.BAR;
             } else if (touchLocation<(getWidth()*2/3)) {
                 finalPosition = bistroTextView.getX();
-                bistroTextView.setTextColor(getResources().getColor(R.color.lyft_orange));
-
+                bistroTextViewColor = orangeColor;
                 currentPlaceType = Place.TYPE.BISTRO;
             } else if (touchLocation>(getWidth()*2/3)) {
                 finalPosition = cafeTextView.getX();
-                cafeTextView.setTextColor(getResources().getColor(R.color.lyft_orange));
-
+                cafeTextViewColor = orangeColor;
                 currentPlaceType = Place.TYPE.CAFE;
             }
+
+            barTextView.setTextColor(barTextViewColor);
+            bistroTextView.setTextColor(bistroTextViewColor);
+            cafeTextView.setTextColor(cafeTextViewColor);
 
             postCurrentPlaceType();
 
@@ -111,7 +116,7 @@ public class SliderSelector extends RelativeLayout {
         return currentPlaceType;
     }
 
-    public void postCurrentPlaceType(){
+    void postCurrentPlaceType(){
         BusProvider.getInstance().post(currentPlaceType);
     }
 }
