@@ -54,7 +54,7 @@ public class SliderSelector extends RelativeLayout {
 
         ButterKnife.inject(this, getRootView());
 
-        currentPlaceType = Place.TYPE.BAR;
+        currentPlaceType = Place.TYPE.CAFE;
     }
 
     @OnTouch(R.id.tray_layout)
@@ -78,15 +78,15 @@ public class SliderSelector extends RelativeLayout {
             if (touchLocation<(getWidth()/3)){
                 finalPosition = barTextView.getX();
                 barTextViewColor = orangeColor;
-                currentPlaceType = Place.TYPE.BAR;
+                currentPlaceType = Place.TYPE.CAFE;
             } else if (touchLocation<(getWidth()*2/3)) {
                 finalPosition = bistroTextView.getX();
                 bistroTextViewColor = orangeColor;
-                currentPlaceType = Place.TYPE.BISTRO;
+                currentPlaceType = Place.TYPE.STARBUCKS;
             } else if (touchLocation>(getWidth()*2/3)) {
                 finalPosition = cafeTextView.getX();
                 cafeTextViewColor = orangeColor;
-                currentPlaceType = Place.TYPE.CAFE;
+                currentPlaceType = Place.TYPE.PEETS_COFFEE;
             }
 
             barTextView.setTextColor(barTextViewColor);

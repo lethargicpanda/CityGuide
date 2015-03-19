@@ -25,14 +25,14 @@
     <TextView
         android:id="@+id/bistro_textview"
         style="@style/SliderButton"
-        android:text="@string/bistro"
+        android:text="@string/starbucks"
         android:layout_centerInParent="true"
         />
 
     <TextView
         android:id="@+id/cafe_textview"
         style="@style/SliderButton"
-        android:text="@string/cafe"
+        android:text="@string/peets"
         android:layout_alignParentRight="true"
         />
 

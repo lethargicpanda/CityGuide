@@ -57,7 +57,7 @@ public class MainActivity extends ActionBarActivity {
 
         Location location = GeolocationProvider.getInstance(this).getLocation();
         if (location!=null){
-            PlacesProvider.fetchPlaces(location, Place.TYPE.BAR);
+            PlacesProvider.fetchPlaces(location, Place.TYPE.CAFE);
         }
     }
 

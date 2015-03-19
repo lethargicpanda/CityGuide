@@ -6,5 +6,7 @@
     <string name="bar">Bar</string>
     <string name="bistro">Bistro</string>
     <string name="cafe">Café</string>
+    <string name="peets">Peet\'s Coffee</string>
+    <string name="starbucks">Starbucks</string>
 
 </resources>

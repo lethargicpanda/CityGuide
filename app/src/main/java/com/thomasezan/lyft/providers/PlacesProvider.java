@@ -20,6 +20,7 @@ public class PlacesProvider {
 
     private static final String BASE_URL = "https://maps.googleapis.com/maps/api/place/search/json?radius=1000&sensor=true&key=AIzaSyDwvIbB3QBPN4VbC5i3Dbu7Cg-C9LTSxjU";
     private static final String TYPE_KEY = "&types=";
+    private static final String KEYWORD_KEY = "&keyword=";
     private static final String LOCATION_KEY = "&location=";
 
     private static OkHttpClient client = new OkHttpClient();
@@ -88,10 +89,13 @@ public class PlacesProvider {
        urlBuilder.append(location.getLatitude());
        urlBuilder.append(",");
        urlBuilder.append(location.getLongitude());
-
        urlBuilder.append(TYPE_KEY);
        urlBuilder.append(type.requestParam);
 
+       if (type.keywordParam != null) {
+           urlBuilder.append(KEYWORD_KEY);
+           urlBuilder.append(type.keywordParam);
+       }
        return urlBuilder.toString();
    }
 

@@ -12,16 +12,21 @@ public class Place {
     private static final String JSON_RATING = "rating";
 
     public static enum TYPE {
-        BAR ("bar", R.drawable.ic_bar),
-        BISTRO ("restaurant", R.drawable.ic_bistro),
-        CAFE ("cafe", R.drawable.ic_cafe);
+//        BAR ("bar", null, R.drawable.ic_bar),
+//        BISTRO ("restaurant", null, R.drawable.ic_bistro),
+        CAFE ("cafe", null, R.drawable.ic_cafe),
+        STARBUCKS ("cafe", "starbucks", R.drawable.ic_cafe),
+        PEETS_COFFEE("cafe", "peets+coffee", R.drawable.ic_cafe);
 
-        TYPE(String requestParam, int iconResource) {
+
+        TYPE(String requestParam, String keywordParam, int iconResource) {
             this.requestParam = requestParam;
+            this.keywordParam = keywordParam;
             this.iconResource = iconResource;
         }
 
         public final String requestParam;
+        public final String keywordParam;
         public final int iconResource;
     }
 
